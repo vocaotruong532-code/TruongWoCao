@@ -1,4 +1,4 @@
-class CardModel {
+class CardModel {// mô hình của các the bài trong trò chơi
   final int id;
   final String imagePath;
   final bool isBoom;
@@ -8,7 +8,7 @@ class CardModel {
   // 👉 Thêm tọa độ để di chuyển
   double x;
   double y;
-
+//các thuộc tính của thẻ bài
   CardModel({
     required this.id,
     required this.imagePath,

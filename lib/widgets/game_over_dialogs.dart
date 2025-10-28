@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/menu_screen.dart';
-
+// hộp thoại trò chơi kết thúc
 
 class GameDialogs {
   static void showLose(BuildContext context, {required VoidCallback restart}) {

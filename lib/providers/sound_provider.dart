@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+// cung cấp âm thanh cho trò chơi
 class SoundProvider extends ChangeNotifier {
   late final AudioPlayer _bgmPlayer; // 🔊 Player riêng cho nhạc nền
   bool _isSoundOn = true;

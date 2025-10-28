@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../models/game_level.dart';
 import '../../widgets/card_widget.dart';
-
+// bảng trò chơi
 class GameBoard extends StatelessWidget {
   final VoidCallback onLevelComplete;
   const GameBoard({super.key, required this.onLevelComplete});

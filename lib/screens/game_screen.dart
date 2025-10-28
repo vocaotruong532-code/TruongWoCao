@@ -5,13 +5,11 @@ import '../widgets/card_widget.dart';
 import '../providers/sound_provider.dart';
 import '../providers/history_provider.dart';
 import 'menu_screen.dart';
-
-// 🧩 import thêm các widget phụ
 import '../widgets/help_button.dart';
 import '../widgets/game_board.dart';
 import '../widgets/game_background.dart';
 import '../widgets/game_over_dialogs.dart';
-
+// trò chơi chính
 class GameScreen extends StatefulWidget {
   final String playerName;
   const GameScreen({super.key, required this.playerName});

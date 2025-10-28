@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/history_provider.dart';
-
+// lịch sử chơi
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
 

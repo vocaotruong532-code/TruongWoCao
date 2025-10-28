@@ -121,13 +121,42 @@ class _RegisterScreenState extends State<RegisterScreen>
                 ? 'assets/backgrounds/light.gif'
                 : 'assets/backgrounds/dark.gif',
             fit: BoxFit.cover,
-            errorBuilder: (_, __, ___) => const ColoredBox(color: Colors.black),
+            errorBuilder: (_, __, ___) =>
+                const ColoredBox(color: Colors.black),
           ),
+
           // ✨ Hiệu ứng đom đóm khi dark mode
           if (!isLight) CustomPaint(painter: FireflyPainter(_fireflies)),
-          // Hiệu ứng mờ
+
+          // Hiệu ứng mờ overlay
           Container(color: Colors.black.withOpacity(0.25)),
 
+          // 🌗 Nút chuyển Dark / Light mode
+          Positioned(
+            top: 40,
+            right: 20,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500),
+              transitionBuilder: (child, anim) =>
+                  RotationTransition(turns: anim, child: child),
+              child: IconButton(
+                key: ValueKey(isLight),
+                icon: Icon(
+                  isLight
+                      ? Icons.dark_mode_rounded
+                      : Icons.light_mode_rounded,
+                  color: isLight ? Colors.brown[900] : Colors.yellowAccent,
+                  size: 30,
+                ),
+                tooltip: isLight
+                    ? 'Chuyển sang Dark mode'
+                    : 'Chuyển sang Light mode',
+                onPressed: themeProvider.toggleTheme,
+              ),
+            ),
+          ),
+
+          // 🌿 Giao diện chính
           Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
@@ -145,8 +174,8 @@ class _RegisterScreenState extends State<RegisterScreen>
                       ),
                     ],
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 30),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -173,13 +202,15 @@ class _RegisterScreenState extends State<RegisterScreen>
                                 color: Colors.white,
                                 shadows: [
                                   Shadow(
-                                      blurRadius: 12,
-                                      color: Colors.black54,
-                                      offset: Offset(2, 2)),
+                                    blurRadius: 12,
+                                    color: Colors.black54,
+                                    offset: Offset(2, 2),
+                                  ),
                                   Shadow(
-                                      blurRadius: 20,
-                                      color: Colors.white70,
-                                      offset: Offset(-2, -2)),
+                                    blurRadius: 20,
+                                    color: Colors.white70,
+                                    offset: Offset(-2, -2),
+                                  ),
                                 ],
                               ),
                             ),
@@ -191,10 +222,12 @@ class _RegisterScreenState extends State<RegisterScreen>
                       // Tên đăng nhập
                       TextFormField(
                         style: TextStyle(color: textColor),
-                        decoration: _inputDecoration('Tên đăng nhập', textColor),
+                        decoration:
+                            _inputDecoration('Tên đăng nhập', textColor),
                         onChanged: (val) => _username = val.trim(),
-                        validator: (val) =>
-                            val == null || val.isEmpty ? 'Nhập tên đăng nhập' : null,
+                        validator: (val) => val == null || val.isEmpty
+                            ? 'Nhập tên đăng nhập'
+                            : null,
                       ),
                       const SizedBox(height: 16),
 
@@ -204,8 +237,9 @@ class _RegisterScreenState extends State<RegisterScreen>
                         obscureText: true,
                         decoration: _inputDecoration('Mật khẩu', textColor),
                         onChanged: (val) => _password = val.trim(),
-                        validator: (val) =>
-                            val == null || val.isEmpty ? 'Nhập mật khẩu' : null,
+                        validator: (val) => val == null || val.isEmpty
+                            ? 'Nhập mật khẩu'
+                            : null,
                       ),
                       const SizedBox(height: 16),
 
@@ -213,17 +247,21 @@ class _RegisterScreenState extends State<RegisterScreen>
                       TextFormField(
                         style: TextStyle(color: textColor),
                         obscureText: true,
-                        decoration: _inputDecoration('Xác nhận mật khẩu', textColor),
+                        decoration: _inputDecoration(
+                            'Xác nhận mật khẩu', textColor),
                         onChanged: (val) => _confirmPassword = val.trim(),
-                        validator: (val) =>
-                            val == null || val.isEmpty ? 'Xác nhận mật khẩu' : null,
+                        validator: (val) => val == null || val.isEmpty
+                            ? 'Xác nhận mật khẩu'
+                            : null,
                       ),
+
                       if (_error != null)
                         Padding(
                           padding: const EdgeInsets.only(top: 8),
                           child: Text(
                             _error!,
-                            style: const TextStyle(color: Colors.redAccent),
+                            style:
+                                const TextStyle(color: Colors.redAccent),
                           ),
                         ),
                       const SizedBox(height: 24),
@@ -239,12 +277,14 @@ class _RegisterScreenState extends State<RegisterScreen>
 
                       // Chuyển sang login
                       TextButton(
-                        onPressed: () =>
-                            Navigator.of(context).pushReplacementNamed('/login'),
+                        onPressed: () => Navigator.of(context)
+                            .pushReplacementNamed('/login'),
                         child: Text(
                           'Đã có tài khoản? Đăng nhập ngay',
                           style: TextStyle(
-                            color: isLight ? Colors.brown[900] : Colors.greenAccent,
+                            color: isLight
+                                ? Colors.brown[900]
+                                : Colors.greenAccent,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -340,7 +380,8 @@ class _ForestButtonState extends State<_ForestButton>
             builder: (context, _) {
               final angle = _controller.value * 2 * pi;
               return Container(
-                margin: const EdgeInsets.symmetric(vertical: 6),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 6),
                 padding:
                     const EdgeInsets.symmetric(vertical: 14, horizontal: 28),
                 decoration: BoxDecoration(
@@ -352,10 +393,10 @@ class _ForestButtonState extends State<_ForestButton>
                   boxShadow: [
                     BoxShadow(
                       color: widget.isDark
-                          ? Colors.blueAccent
-                              .withOpacity(_isHovered ? 0.8 : _glowAnim.value * 0.6)
-                          : Colors.greenAccent
-                              .withOpacity(_isHovered ? 0.9 : _glowAnim.value),
+                          ? Colors.blueAccent.withOpacity(
+                              _isHovered ? 0.8 : _glowAnim.value * 0.6)
+                          : Colors.greenAccent.withOpacity(
+                              _isHovered ? 0.9 : _glowAnim.value),
                       blurRadius: _isHovered ? 18 : 12,
                       spreadRadius: _isHovered ? 3 : 2,
                     ),
@@ -374,14 +415,16 @@ class _ForestButtonState extends State<_ForestButton>
                         color: textColor,
                         shadows: [
                           Shadow(
-                              blurRadius: 6,
-                              color: Colors.black.withOpacity(0.3),
-                              offset: const Offset(1, 1)),
+                            blurRadius: 6,
+                            color: Colors.black.withOpacity(0.3),
+                            offset: const Offset(1, 1),
+                          ),
                         ],
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Icon(Icons.chevron_right_rounded, color: textColor, size: 20),
+                    Icon(Icons.chevron_right_rounded,
+                        color: textColor, size: 20),
                   ],
                 ),
               );
@@ -421,10 +464,15 @@ class FireflyPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
+    final paint =
+        Paint()..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
     for (final f in fireflies) {
-      paint.color = Colors.yellowAccent.withOpacity(f.opacity);
-      canvas.drawCircle(Offset(f.x * size.width, f.y * size.height), f.radius, paint);
+      paint.color =
+          Colors.yellowAccent.withOpacity(f.opacity);
+      canvas.drawCircle(
+          Offset(f.x * size.width, f.y * size.height),
+          f.radius,
+          paint);
     }
   }
 

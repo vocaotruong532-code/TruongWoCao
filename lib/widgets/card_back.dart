@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-
+// mặt sau cảu thẻ bài
 class CardBack extends StatelessWidget {
   final Random random;
   const CardBack({super.key, required this.random});
