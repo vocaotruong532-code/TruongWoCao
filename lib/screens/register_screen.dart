@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/theme_provider.dart';
-
+// đăng ký tài khoản người dùng
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 

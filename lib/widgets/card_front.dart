@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-
+/// thẻ hiện mặt trước của thẻ bài
 class CardFront extends StatelessWidget {//thẻ hiện mặt trước của thẻ bài
   final String imagePath;
   const CardFront({super.key, required this.imagePath});

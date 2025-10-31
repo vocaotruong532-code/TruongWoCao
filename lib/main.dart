@@ -7,7 +7,7 @@ import 'providers/history_provider.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/menu_screen.dart';
-
+/// điểm vào của ứng dụng
 void main() {
   runApp(const MemoryCardFlipApp());
 }

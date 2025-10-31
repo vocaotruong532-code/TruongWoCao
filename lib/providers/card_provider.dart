@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/foundation.dart';
 import '../models/card_model.dart';
-
+// thẻ bài và logic trò chơi
 class CardProvider with ChangeNotifier {
   String _playerName = '';
   int _score = 0;

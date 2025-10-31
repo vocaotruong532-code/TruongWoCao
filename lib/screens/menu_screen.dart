@@ -6,7 +6,7 @@ import '../providers/sound_provider.dart';
 import 'settings_screen.dart';
 import 'history_screen.dart';
 import 'name_input_screen.dart';
-
+// màn hình chính với nền động và các nút menu
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 

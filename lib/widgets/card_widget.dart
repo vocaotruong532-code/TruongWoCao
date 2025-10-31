@@ -6,7 +6,7 @@ import '../providers/sound_provider.dart';
 import 'card_front.dart';
 import 'card_back.dart';
 import 'card_effects.dart'; // ✅ import hiệu ứng
-// thẻ bài  
+// thẻ bài với hiệu ứng lật, rung và di chuyển
 class CardWidget extends StatefulWidget {
   final CardModel card;
   final VoidCallback? onTap;

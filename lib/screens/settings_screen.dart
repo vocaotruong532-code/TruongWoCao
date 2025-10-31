@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
 import '../providers/sound_provider.dart';
-
+// cài đặt giao diện và âm thanh
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
