@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import '../models/game_level.dart';
-// thanh trợ giúp
+
 class HelpBar extends StatelessWidget {
   final GameLevel level;
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// nút trợ giúp có hiệu ứng động
+
 class AnimatedHelpButton extends StatelessWidget {
   final IconData icon;
   final String label;

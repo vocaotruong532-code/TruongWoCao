@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
 import '../providers/sound_provider.dart';
-// cài đặt giao diện và âm thanh
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
@@ -42,7 +42,7 @@ class _SettingsScreenState extends State<SettingsScreen>
       body: Stack(
         fit: StackFit.expand,
         children: [
-          /// 🌄 Nền động ngày/đêm (GIF)
+         
           Consumer<ThemeProvider>(
             builder: (context, themeProvider, child) {
               final isDark = themeProvider.themeMode == ThemeMode.dark;
@@ -57,7 +57,7 @@ class _SettingsScreenState extends State<SettingsScreen>
             },
           ),
 
-          /// 🪄 Hiệu ứng đom đóm (chỉ hiện khi dark mode)
+         
           Consumer<ThemeProvider>(
             builder: (context, themeProvider, _) {
               if (themeProvider.themeMode != ThemeMode.dark) {
@@ -101,7 +101,7 @@ class _SettingsScreenState extends State<SettingsScreen>
             },
           ),
 
-          /// 🌿 Giao diện cài đặt chính
+          
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Consumer2<ThemeProvider, SoundProvider>(
@@ -211,7 +211,7 @@ class _SettingsScreenState extends State<SettingsScreen>
   }
 }
 
-/// 🌳 Widget hiển thị từng phần cài đặt (phong cách nút menu)
+
 class _SettingSection extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -233,10 +233,10 @@ class _SettingSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final gradientColors = isDark
         ? const [
-            Color(0xFF1B5E20), // xanh rừng đậm
-            Color(0xFF004D40), // xanh lam ngọc
-            Color(0xFF283593), // tím xanh
-            Color(0xFF2E2E2E), // xám đêm
+            Color(0xFF1B5E20), 
+            Color(0xFF004D40), 
+            Color(0xFF283593), 
+            Color(0xFF2E2E2E), 
           ]
         : const [
             Color(0xFF4CAF50),

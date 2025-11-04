@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'game_screen.dart';
-// tên người chơi nhập vào trước khi bắt đầu trò chơi
+
 class NameInputScreen extends StatefulWidget {
   const NameInputScreen({super.key});
 
@@ -214,7 +214,7 @@ class _NameInputScreenState extends State<NameInputScreen>
   }
 }
 
-/// ✨ Hiệu ứng đom đóm
+
 class _Fireflies extends StatefulWidget {
   final int count;
   const _Fireflies({this.count = 20});

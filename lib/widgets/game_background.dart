@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// giao diện nền trò chơi
+
 class GameBackground extends StatelessWidget {
   const GameBackground({super.key});
 

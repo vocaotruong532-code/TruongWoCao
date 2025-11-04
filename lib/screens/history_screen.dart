@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/history_provider.dart';
-// lịch sử chơi
+
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});
 
@@ -11,7 +11,7 @@ class HistoryScreen extends StatefulWidget {
 
 class _HistoryScreenState extends State<HistoryScreen>
     with SingleTickerProviderStateMixin {
-  String _sortBy = 'score'; // score | level | player
+  String _sortBy = 'score';
   late AnimationController _blinkController;
   late Animation<double> _blinkAnim;
 
@@ -117,7 +117,6 @@ class _HistoryScreenState extends State<HistoryScreen>
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // Nền
           Builder(
             builder: (context) {
               final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -130,13 +129,9 @@ class _HistoryScreenState extends State<HistoryScreen>
               );
             },
           ),
-
-          // Nội dung lịch sử
           Consumer<HistoryProvider>(
             builder: (context, history, _) {
               var data = [...history.entries];
-
-              // Sắp xếp theo tiêu chí
               if (_sortBy == 'score') {
                 data.sort((a, b) => b.score.compareTo(a.score));
               } else if (_sortBy == 'level') {
@@ -144,13 +139,11 @@ class _HistoryScreenState extends State<HistoryScreen>
               } else if (_sortBy == 'player') {
                 data.sort((a, b) => a.playerName.compareTo(b.playerName));
               }
-
               if (data.isEmpty) {
                 return const Center(
                   child: Text('Chưa có lịch sử. Hãy chơi một ván!'),
                 );
               }
-
               return Column(
                 children: [
                   const SizedBox(height: 8),
@@ -160,7 +153,6 @@ class _HistoryScreenState extends State<HistoryScreen>
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // Sort theo điểm
                           GestureDetector(
                             onTap: () {
                               setState(() => _sortBy = 'score');
@@ -184,8 +176,6 @@ class _HistoryScreenState extends State<HistoryScreen>
                               ),
                             ),
                           ),
-
-                          // Sort theo level
                           GestureDetector(
                             onTap: () {
                               setState(() => _sortBy = 'level');
@@ -209,8 +199,6 @@ class _HistoryScreenState extends State<HistoryScreen>
                               ),
                             ),
                           ),
-
-                          // Sort theo tên người chơi
                           GestureDetector(
                             onTap: () {
                               setState(() => _sortBy = 'player');
@@ -239,8 +227,6 @@ class _HistoryScreenState extends State<HistoryScreen>
                     },
                   ),
                   const SizedBox(height: 10),
-
-                  // Danh sách lịch sử
                   Expanded(
                     child: ListView.separated(
                       padding: const EdgeInsets.all(12),
@@ -250,7 +236,6 @@ class _HistoryScreenState extends State<HistoryScreen>
                         final e = data[index];
                         final color = _resultColor(context, e.result);
                         final icon = _resultIcon(e.result);
-
                         return Container(
                           decoration: BoxDecoration(
                             color: Theme.of(context)

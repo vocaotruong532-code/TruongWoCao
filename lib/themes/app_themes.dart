@@ -1,5 +1,4 @@
-/// Chứa 2 cấu hình `ThemeData` cho Light/Dark theme.
-/// Có thể mở rộng thêm màu sắc cho Button, Card, Text tùy nhu cầu UI.
+
 library;
 import 'package:flutter/material.dart';
 

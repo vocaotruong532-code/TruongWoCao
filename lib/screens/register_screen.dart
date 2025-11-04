@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/theme_provider.dart';
-// đăng ký tài khoản người dùng
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -29,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen>
         AnimationController(vsync: this, duration: const Duration(seconds: 6))
           ..repeat();
 
-    // ✨ Tạo đom đóm (ẩn khi light mode)
+
     final random = Random();
     _fireflies = List.generate(
       25,
@@ -125,13 +125,13 @@ class _RegisterScreenState extends State<RegisterScreen>
                 const ColoredBox(color: Colors.black),
           ),
 
-          // ✨ Hiệu ứng đom đóm khi dark mode
+         
           if (!isLight) CustomPaint(painter: FireflyPainter(_fireflies)),
 
-          // Hiệu ứng mờ overlay
+          
           Container(color: Colors.black.withOpacity(0.25)),
 
-          // 🌗 Nút chuyển Dark / Light mode
+          
           Positioned(
             top: 40,
             right: 20,
@@ -156,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen>
             ),
           ),
 
-          // 🌿 Giao diện chính
+         
           Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
@@ -179,7 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // 🌟 Tiêu đề gradient động
+                     
                       AnimatedBuilder(
                         animation: _controller,
                         builder: (context, _) {
@@ -219,7 +219,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                       ),
                       const SizedBox(height: 24),
 
-                      // Tên đăng nhập
+                     
                       TextFormField(
                         style: TextStyle(color: textColor),
                         decoration:
@@ -231,7 +231,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                       ),
                       const SizedBox(height: 16),
 
-                      // Mật khẩu
+                      
                       TextFormField(
                         style: TextStyle(color: textColor),
                         obscureText: true,
@@ -243,7 +243,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                       ),
                       const SizedBox(height: 16),
 
-                      // Xác nhận mật khẩu
+                      
                       TextFormField(
                         style: TextStyle(color: textColor),
                         obscureText: true,
@@ -266,7 +266,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                         ),
                       const SizedBox(height: 24),
 
-                      // 🌿 Nút đăng ký
+                      
                       _ForestButton(
                         icon: Icons.person_add_alt_1_rounded,
                         label: 'Đăng ký',
@@ -275,7 +275,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                       ),
                       const SizedBox(height: 16),
 
-                      // Chuyển sang login
+                      
                       TextButton(
                         onPressed: () => Navigator.of(context)
                             .pushReplacementNamed('/login'),
@@ -301,7 +301,7 @@ class _RegisterScreenState extends State<RegisterScreen>
   }
 }
 
-/// 🌿 Button phong cách rừng
+
 class _ForestButton extends StatefulWidget {
   final IconData icon;
   final String label;
@@ -436,7 +436,7 @@ class _ForestButtonState extends State<_ForestButton>
   }
 }
 
-/// 💡 Lớp đom đóm
+
 class Firefly {
   double x, y, dx, dy, radius, opacity;
 
@@ -457,7 +457,7 @@ class Firefly {
   }
 }
 
-/// 🎇 Vẽ đom đóm
+
 class FireflyPainter extends CustomPainter {
   final List<Firefly> fireflies;
   FireflyPainter(this.fireflies);

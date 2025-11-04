@@ -1,8 +1,4 @@
-/// ThemeProvider
-/// --------------
-/// Quản lý trạng thái theme của ứng dụng (Light/Dark) bằng ChangeNotifier.
-/// - Tải trạng thái từ SharedPreferences khi khởi tạo.
-/// - `toggleTheme()` đảo theme và lưu lại.
+
 library;
 
 import 'package:flutter/material.dart';

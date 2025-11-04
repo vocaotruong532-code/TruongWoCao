@@ -2,18 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// HistoryProvider
-/// ----------------
-/// Lưu và đọc lịch sử chơi từ SharedPreferences dưới dạng JSON.
-/// Mỗi bản ghi gồm:
-/// - playerName: tên người chơi
-/// - thời gian
-/// - level
-/// - kết quả (win/lose/clear)
-/// - thời gian còn lại
-/// - điểm (score)
+
 class HistoryProvider extends ChangeNotifier {
-  static const _prefsKey = 'history_records_v3'; // đổi v3 để tránh lỗi dữ liệu cũ
+  static const _prefsKey = 'history_records_v3';
   final List<HistoryEntry> _entries = [];
 
   List<HistoryEntry> get entries => List.unmodifiable(_entries);
@@ -34,7 +25,7 @@ class HistoryProvider extends ChangeNotifier {
             list.map((e) => HistoryEntry.fromJson(e as Map<String, dynamic>)),
           );
       } catch (_) {
-        // ignore corrupted data
+        
       }
     }
     notifyListeners();
@@ -46,13 +37,12 @@ class HistoryProvider extends ChangeNotifier {
     await prefs.setString(_prefsKey, raw);
   }
 
-  /// Thêm một bản ghi lịch sử
-  /// `score` mặc định = 0, `playerName` mặc định là 'Người chơi'
+
   Future<void> addEntry({
     required String playerName,
     required DateTime time,
     required int level,
-    required String result, // 'win' | 'lose' | 'clear'
+    required String result,
     required int timeRemaining,
     int score = 0,
   }) async {
@@ -78,12 +68,12 @@ class HistoryProvider extends ChangeNotifier {
   }
 }
 
-/// Model một bản ghi lịch sử
+
 class HistoryEntry {
-  final String playerName; // ✅ tên người chơi
+  final String playerName; 
   final DateTime time;
   final int level;
-  final String result; // 'win' | 'lose' | 'clear'
+  final String result; 
   final int timeRemaining;
   final int score;
 

@@ -6,7 +6,7 @@ import '../providers/sound_provider.dart';
 import 'settings_screen.dart';
 import 'history_screen.dart';
 import 'name_input_screen.dart';
-// màn hình chính với nền động và các nút menu
+
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
 
@@ -173,7 +173,7 @@ class _MenuScreenState extends State<MenuScreen>
   }
 }
 
-/// 🌿 Nút phong cách rừng – hiệu ứng hover & nhấn
+
 class _ForestButton extends StatefulWidget {
   final IconData icon;
   final String label;
@@ -315,7 +315,7 @@ class _ForestButtonState extends State<_ForestButton>
   }
 }
 
-/// ✨ Hiệu ứng đom đóm khi dark mode
+
 class Fireflies extends StatefulWidget {
   final int count;
   final Size? area;

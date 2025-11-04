@@ -1,9 +1,9 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// cung cấp âm thanh cho trò chơi
+
 class SoundProvider extends ChangeNotifier {
-  late final AudioPlayer _bgmPlayer; // 🔊 Player riêng cho nhạc nền
+  late final AudioPlayer _bgmPlayer;
   bool _isSoundOn = true;
   bool get isSoundOn => _isSoundOn;
 
@@ -12,7 +12,7 @@ class SoundProvider extends ChangeNotifier {
     _init();
   }
 
-  /// 🔧 Khởi tạo âm thanh và phát BGM nếu bật
+ 
   Future<void> _init() async {
     final prefs = await SharedPreferences.getInstance();
     _isSoundOn = prefs.getBool('sound_on') ?? true;
@@ -21,14 +21,14 @@ class SoundProvider extends ChangeNotifier {
     await _bgmPlayer.setVolume(0.5);
 
     if (_isSoundOn) {
-      // Đợi một chút sau khi app load để tránh lỗi chưa gắn Source
+  
       Future.delayed(const Duration(milliseconds: 500), () {
         playBGM();
       });
     }
   }
 
-  /// 🔄 Bật/tắt âm thanh
+  
   Future<void> toggleSound() async {
     final prefs = await SharedPreferences.getInstance();
     _isSoundOn = !_isSoundOn;
@@ -43,12 +43,12 @@ class SoundProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// 🎶 Phát nhạc nền (loop)
+
   Future<void> playBGM() async {
     if (!_isSoundOn) return;
     try {
       debugPrint('🎵 Bắt đầu phát nhạc nền...');
-      await _bgmPlayer.stop(); // Dừng nếu đang phát cũ
+      await _bgmPlayer.stop(); 
       await _bgmPlayer.setReleaseMode(ReleaseMode.loop);
       await _bgmPlayer.setVolume(0.5);
       await _bgmPlayer.play(AssetSource('audio/BGM.mp3'), volume: 0.5);
@@ -58,7 +58,7 @@ class SoundProvider extends ChangeNotifier {
     }
   }
 
-  /// ⏹ Dừng nhạc nền
+ 
   Future<void> stopBGM() async {
     try {
       await _bgmPlayer.stop();
@@ -68,7 +68,7 @@ class SoundProvider extends ChangeNotifier {
     }
   }
 
-  /// 🎧 Phát hiệu ứng ngắn (click, match, win, ...)
+
   Future<void> _playEffect(String assetPath, {double volume = 1.0}) async {
     if (!_isSoundOn) return;
     try {
@@ -83,7 +83,7 @@ class SoundProvider extends ChangeNotifier {
     }
   }
 
-  // 🔊 Các hiệu ứng
+
   Future<void> playClick() async => _playEffect('audio/click.mp3', volume: 0.9);
   Future<void> playFlip() async => _playEffect('audio/flip.mp3');
   Future<void> playMatch() async => _playEffect('audio/match.mp3');

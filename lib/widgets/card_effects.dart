@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Quản lý toàn bộ animation của thẻ (flip / shake / move)
+
 class CardEffects {
   late final AnimationController flipController;
   late final AnimationController shakeController;
@@ -13,7 +13,7 @@ class CardEffects {
   final TickerProvider vsync;
 
   CardEffects(this.vsync) {
-    // 🌀 Lật thẻ
+    
     flipController = AnimationController(
       vsync: vsync,
       duration: const Duration(milliseconds: 300),
@@ -22,7 +22,7 @@ class CardEffects {
       CurvedAnimation(parent: flipController, curve: Curves.linear),
     );
 
-    // 💥 Rung khi nhấn
+    
     shakeController = AnimationController(
       vsync: vsync,
       duration: const Duration(milliseconds: 250),
@@ -31,7 +31,7 @@ class CardEffects {
       CurvedAnimation(parent: shakeController, curve: Curves.elasticIn),
     );
 
-    // 🚀 Di chuyển (bay lên xuống)
+    
     moveController = AnimationController(
       vsync: vsync,
       duration: const Duration(milliseconds: 600),
@@ -44,21 +44,21 @@ class CardEffects {
     );
   }
 
-  /// Khi xáo trộn thẻ
+  
   void playShuffleEffect() {
     moveController
       ..reset()
       ..forward().then((_) => moveController.reverse());
   }
 
-  /// Khi người chơi chọn sai
+  
   void playShake() {
     shakeController
       ..reset()
       ..forward();
   }
 
-  /// Đồng bộ trạng thái lật thẻ
+  
   void syncFlip(bool isFlipped) {
     if (isFlipped && flipController.value == 0) {
       flipController.forward();
@@ -67,7 +67,7 @@ class CardEffects {
     }
   }
 
-  /// Hủy bỏ tất cả animation
+  
   void dispose() {
     flipController.dispose();
     shakeController.dispose();
